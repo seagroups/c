@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int rows, number = 1;
+        Console.WriteLine("Enter the number of rows for Floyd's triangle:");
+        rows = Convert.ToInt32(Console.ReadLine());
+
+        int[][] triangle = new int[rows][];
+
+        for (int i = 0; i < rows; i++)
+        {
+            triangle[i] = new int[i + 1];
+            for (int j = 0; j <= i; j++)
+            {
+                triangle[i][j] = number;
+                number++;
+            }
+        }
+
+        Console.WriteLine("Floyd's Triangle:");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j <= i; j++)
+            {
+                Console.Write(triangle[i][j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
