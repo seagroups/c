@@ -1,0 +1,38 @@
+using System;
+
+class Stack
+{
+    private const int MaxSize = 100;
+    private int[] stackArray = new int[MaxSize];
+    private int top = -1;
+
+    static void Main()
+    {
+        var myStack = new Stack();
+
+        myStack.Push(10);
+        myStack.Push(20);
+        myStack.Push(30);
+
+        Console.WriteLine("Elements in the stack:");
+        myStack.DisplayStack();
+
+        Console.WriteLine("Popped element: " + myStack.Pop());
+
+        Console.WriteLine("Elements in the stack after popping:");
+        myStack.DisplayStack();
+    }
+
+    public void Push(int item) => stackArray[++top] = item;
+
+    public int Pop() => (top == -1) ? -1 : stackArray[top--];
+
+    public void DisplayStack()
+    {
+        if (top == -1)
+            Console.WriteLine("Stack is empty.");
+        else
+            for (int i = top; i >= 0; i--)
+                Console.WriteLine(stackArray[i]);
+    }
+}

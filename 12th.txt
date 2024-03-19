@@ -1,0 +1,64 @@
+using System;
+
+public interface Resizable
+{
+    void ResizeWidth(int width);
+    void ResizeHeight(int height);
+}
+
+public class Rectangle : Resizable
+{
+    private int width;
+    private int height;
+
+    public Rectangle(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void Display() => Console.WriteLine($"Rectangle: Width = {width}, Height = {height}");
+
+    public void ResizeWidth(int newWidth)
+    {
+        if (newWidth > 0)
+        {
+            width = newWidth;
+            Console.WriteLine($"Resized width to {width}");
+        }
+        else
+        {
+            Console.WriteLine("Width must be a positive value.");
+        }
+    }
+
+    public void ResizeHeight(int newHeight)
+    {
+        if (newHeight > 0)
+        {
+            height = newHeight;
+            Console.WriteLine($"Resized height to {height}");
+        }
+        else
+        {
+            Console.WriteLine("Height must be a positive value.");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Rectangle rectangle = new Rectangle(10, 5);
+
+        Console.WriteLine("Initial State:");
+        rectangle.Display();
+
+        rectangle.ResizeWidth(15);
+        rectangle.ResizeHeight(8);
+
+        Console.WriteLine("Final State:");
+        rectangle.Display();
+    }
+}

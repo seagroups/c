@@ -1,0 +1,21 @@
+using System;
+
+class Complex
+{
+    private double real, imaginary;
+    public Complex(double r, double i) => (real, imaginary) = (r, i);
+    public static Complex operator +(Complex c1, Complex c2) => new Complex(c1.real + c2.real, c1.imaginary + c2.imaginary);
+    public void Display() => Console.WriteLine($"Result: {real} + {imaginary}i");
+
+    static void Main()
+    {
+        double ReadInput(string prompt) { Console.Write(prompt); return Convert.ToDouble(Console.ReadLine()); }
+        Console.WriteLine("Enter the first Complex Number: ");
+        var complex1 = new Complex(ReadInput("Real part: "), ReadInput("Imaginary part: "));
+Console.WriteLine("\nEnter the second Complex Number: ");
+        var complex2 = new Complex(ReadInput("Real part: "), ReadInput("Imaginary part: "));
+        var result = complex1 + complex2;
+        Console.WriteLine("\nResult of Addition:");
+        result.Display();
+    }
+}

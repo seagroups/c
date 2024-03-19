@@ -1,0 +1,54 @@
+using System;
+
+public abstract class Shape
+{
+    public abstract double Area();
+    public abstract double Perimeter();
+}
+
+public class Circle : Shape
+{
+    public double Radius { get; set; }
+
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+
+    public override double Area() => Math.PI * Math.Pow(Radius, 2);
+    public override double Perimeter() => 2 * Math.PI * Radius;
+}
+
+public class Triangle : Shape
+{
+    public double Side1 { get; set; }
+    public double Side2 { get; set; }
+    public double Side3 { get; set; }
+
+    public Triangle(double side1, double side2, double side3)
+    {
+        Side1 = side1;
+        Side2 = side2;
+        Side3 = side3;
+    }
+
+    public override double Area()
+    {
+        double s = (Side1 + Side2 + Side3) / 2;
+        return Math.Sqrt(s * (s - Side1) * (s - Side2) * (s - Side3));
+    }
+
+    public override double Perimeter() => Side1 + Side2 + Side3;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Circle circle = new Circle(5);
+        Triangle triangle = new Triangle(3, 4, 5);
+
+        Console.WriteLine($"Circle:\nArea: {circle.Area()}\nPerimeter: {circle.Perimeter()}\n");
+        Console.WriteLine($"Triangle:\nArea: {triangle.Area()}\nPerimeter: {triangle.Perimeter()}");
+    }
+}
